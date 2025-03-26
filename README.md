@@ -24,3 +24,4 @@ There is a word list provided, feel free to modify it as you see fit.
 
 - Allow keyboard input
 - Keep track of words that have been used already and display them on the screen
+        
