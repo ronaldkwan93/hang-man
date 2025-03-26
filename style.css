@@ -1,3 +1,15 @@
-
+.keyboard {
+  padding: 0 10%;
+}
+.keyboard__container {
+  padding-top: 1em;
+  display: flex;
+  justify-content: center;
+  gap: 1.5em;
+}
+.keyboard__container .box {
+  border: 1px solid black;
+  padding: 20px;
+}
 
 /*# sourceMappingURL=style.css.map */
