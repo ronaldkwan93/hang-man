@@ -1,3 +1,5 @@
+export let gameWord = "";
+
 export const words = [
   "apple",
   "banana",
@@ -203,10 +205,53 @@ export const words = [
 
 export const getRandomWord = (words) => {
   let randomIndex = Math.floor(Math.random() * words.length);
-  console.log(words[randomIndex]);
-  return words[randomIndex];
+  gameWord = words[randomIndex];
+  console.log(gameWord);
+  return gameWord;
 };
 
 export const encryptWord = (word) => {
   return word.replace(/./g, "_ ").trim();
 };
+
+export const compareValuesReturnIndex = (e, word) => {
+  const value = e.target.textContent;
+  const arr = word.split("");
+  let newArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (value === arr[i]) {
+      newArray.push(i);
+    }
+  }
+  console.log(newArray);
+  return newArray;
+};
+
+export const validateEncryptionWord = (e, indices) => {
+  let encryptedDiv = document.querySelector(".encrypted-word");
+  let displayedWord = encryptedDiv.textContent.split("");
+  let keyValue = e.target.textContent;
+  for (let i = 0; i < displayedWord.length; i++) {
+    let index = indices[i];
+    if (index >= 0) {
+      // due to the space created, reading index * 2 from the original index. 
+      displayedWord[index * 2] = keyValue;
+    }
+  }
+  console.log(displayedWord);
+  encryptedDiv.textContent = displayedWord.join("");
+
+  
+  console.log(displayedWord.filter(x => x !== ' '));
+
+  // value (letter) is not included in the randomWord, we want diagram of hangman to be appended
+
+}
+
+// branch 2
+
+// ending 1
+// If diagrams of hangman === 11 && encrypted letters >= 1, game over
+
+// ending 2
+// If all encrypted letters === 0, then game is done.

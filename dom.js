@@ -12,5 +12,6 @@ const resetinnerHTML = (query) => {
 const createContainerAndText = (htmlContainer, word) => {
   const divElement = document.createElement(`${htmlContainer}`);
   divElement.textContent = word;
+  divElement.classList.add("encrypted-word")
   randomWordQuery.appendChild(divElement);
 };
