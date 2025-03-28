@@ -1,16 +1,16 @@
-import { words, getRandomWord } from "./game.js";
+const randomWordQuery = document.querySelector(".random-word");
 
+export const appendDivAndWord = (htmlContainer, word) => {
+  resetinnerHTML(randomWordQuery);
+  createContainerAndText(htmlContainer, word);
+};
 
-export const initializeGame = () => {
-    const button = document.querySelector("#btn-start");
-    const randomWordQuery = document.querySelector(".random-word");
-    
-    button.addEventListener("click", () => {
-      randomWordQuery.innerHTML = "";
-      const textNode = document.createElement("div");
-      const randomWord = getRandomWord(words);
-      const encryptWord = randomWord.replace(/./g, '_ ').trim();
-      textNode.textContent = encryptWord;
-      randomWordQuery.appendChild(textNode);
-    });
-}
+const resetinnerHTML = (query) => {
+  return (query.innerHTML = "");
+};
+
+const createContainerAndText = (htmlContainer, word) => {
+  const divElement = document.createElement(`${htmlContainer}`);
+  divElement.textContent = word;
+  randomWordQuery.appendChild(divElement);
+};

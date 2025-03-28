@@ -1,5 +1,15 @@
-import { initializeGame } from "./dom.js";
+import { appendDivAndWord } from "./dom.js";
+import { words, getRandomWord, encryptWord } from "./game.js";
 
-console.log("hello");
+const button = document.querySelector("#btn-start");
+const keyButton = document.querySelectorAll(".box");
 
-initializeGame();
+//Game start button
+button.addEventListener("click", () => {
+  const randomWord = getRandomWord(words);
+  const encryptedWord = encryptWord(randomWord);
+  appendDivAndWord("div", encryptedWord);
+});
+
+
+
