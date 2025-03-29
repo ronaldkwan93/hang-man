@@ -31,4 +31,11 @@ header {
   color: #666666;
 }
 
+.attempt {
+  padding: 3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /*# sourceMappingURL=style.css.map */
