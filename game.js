@@ -1,4 +1,5 @@
 export let gameWord = "";
+export let attempts = 0;
 
 export const words = [
   "apple",
@@ -223,7 +224,7 @@ export const compareValuesReturnIndex = (e, word) => {
       newArray.push(i);
     }
   }
-  console.log(newArray);
+  // console.log(newArray);
   return newArray;
 };
 
@@ -233,20 +234,42 @@ export const validateEncryptionWord = (e, indices) => {
   let keyValue = e.target.textContent;
   for (let i = 0; i < displayedWord.length; i++) {
     let index = indices[i];
-    if (index >= 0) {
-      // due to the space created, reading index * 2 from the original index. 
+    // due to the space created, reading index * 2 from the original index.
+    if (gameWord.includes(keyValue)) {
       displayedWord[index * 2] = keyValue;
+    } else {
+      attempts++;
+      console.log('Attempts made: ' + attempts);
+      break;
     }
   }
-  console.log(displayedWord);
+
   encryptedDiv.textContent = displayedWord.join("");
 
-  
-  console.log(displayedWord.filter(x => x !== ' '));
+  console.log(displayedWord.filter((x) => x !== " "));
+
+  const message = document.querySelector(".message");
+  const boxes= document.querySelectorAll('.box');
+
+  if (displayedWord.every((x) => x !== "_")) {
+    const messageDiv = document.createElement("div");
+    messageDiv.textContent = "Win";
+    message.appendChild(messageDiv);
+    attempts = 0;
+  } else if (attempts === 11) {
+    const messageDiv = document.createElement("div");
+    messageDiv.textContent = "Lose";
+    message.appendChild(messageDiv);
+    const button = document.querySelector("#btn-start");
+    button.textContent = 'RESTART GAME';
+    attempts = 0;
+    boxes.forEach(box => {
+      box.classList.add('disabled');
+    });
+  }
 
   // value (letter) is not included in the randomWord, we want diagram of hangman to be appended
-
-}
+};
 
 // branch 2
 

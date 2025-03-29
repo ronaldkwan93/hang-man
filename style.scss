@@ -22,5 +22,12 @@ header {
       border: 1px solid black;
       padding: 20px;
     }
+    .disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+      background-color: #cccccc;
+      color: #666666;
+    }
   }
 }

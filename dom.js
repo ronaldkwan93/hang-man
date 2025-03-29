@@ -1,4 +1,6 @@
+
 const randomWordQuery = document.querySelector(".random-word");
+
 
 export const appendDivAndWord = (htmlContainer, word) => {
   resetinnerHTML(randomWordQuery);
@@ -14,4 +16,5 @@ const createContainerAndText = (htmlContainer, word) => {
   divElement.textContent = word;
   divElement.classList.add("encrypted-word")
   randomWordQuery.appendChild(divElement);
+  
 };

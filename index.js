@@ -6,16 +6,24 @@ import {
   gameWord,
   compareValuesReturnIndex,
   validateEncryptionWord,
+  attempts,
 } from "./game.js";
 
 const button = document.querySelector("#btn-start");
 const keyButton = document.querySelectorAll(".box");
+const message = document.querySelector(".message");
+const boxes= document.querySelectorAll('.box');
+
 
 //Game start button
 button.addEventListener("click", () => {
   const randomWord = getRandomWord(words);
   const encryptedWord = encryptWord(randomWord);
   appendDivAndWord("div", encryptedWord);
+  message.textContent = '';
+  boxes.forEach(box => {
+    box.classList.remove('disabled');
+  });
 });
 
 //eventlistener to the keyboard
