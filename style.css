@@ -31,11 +31,15 @@ header {
   color: #666666;
 }
 
-.attempt {
+.result-container {
   padding: 3%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.result-container .message {
+  font-size: 2em;
+  width: 30%;
 }
 
 /*# sourceMappingURL=style.css.map */

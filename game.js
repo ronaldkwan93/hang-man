@@ -209,15 +209,15 @@ export const words = [
 
 export const startGame = () => {
   const randomWord = getRandomWord(words);
-    const encryptedWord = encryptWord(randomWord);
-    appendDivAndWord("div", encryptedWord);
-    gameStarted = true;
-}
+  const encryptedWord = encryptWord(randomWord);
+  appendDivAndWord("div", encryptedWord);
+  gameStarted = true;
+};
 
 export const resetAttempt = () => {
   attempts = 0;
-  attemptContainer.src = `./assets/img/h-${attempts}.jpg`
-}
+  attemptContainer.src = `./assets/img/h-${attempts}.jpg`;
+};
 
 export const getRandomWord = (words) => {
   let randomIndex = Math.floor(Math.random() * words.length);
@@ -250,15 +250,18 @@ export const validateEncryptionWord = (e, indices) => {
   let encryptedDiv = document.querySelector(".encrypted-word");
   let displayedWord = encryptedDiv.textContent.split("");
   let keyValue = e.target.textContent;
+  const keyQuery = document.querySelector(`#${keyValue}`);
+  keyQuery.classList.add("disabled");
   for (let i = 0; i < displayedWord.length; i++) {
     let index = indices[i];
     // due to the space created, reading index * 2 from the original index.
     if (gameWord.includes(keyValue)) {
       displayedWord[index * 2] = keyValue;
+      //target key box, append disable class
     } else {
       attempts++;
       attemptContainer.src = `./assets/img/h-${attempts}.jpg`;
-      attemptContainer.classList.add('attempt-img')
+      attemptContainer.classList.add("attempt-img");
       attemptQuery.appendChild(attemptContainer);
       console.log("Attempts made: " + attempts);
       break;
@@ -275,12 +278,12 @@ export const validateEncryptionWord = (e, indices) => {
 
   if (displayedWord.every((x) => x !== "_")) {
     const messageDiv = document.createElement("div");
-    messageDiv.textContent = "Win";
+    messageDiv.textContent = "Well done! You've guessed the word :)";
     message.appendChild(messageDiv);
     attempts = 0;
   } else if (attempts === 10) {
     const messageDiv = document.createElement("div");
-    messageDiv.textContent = "Lose";
+    messageDiv.textContent = "Sorry, please try again with 'RESTART GAME'";
     message.appendChild(messageDiv);
     const button = document.querySelector("#btn-start");
     button.textContent = "RESTART GAME";

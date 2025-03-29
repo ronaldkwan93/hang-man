@@ -32,9 +32,14 @@ header {
   }
 }
 
-.attempt {
+.result-container {
   padding: 3%;
   display: flex;
   justify-content: center;
   align-items: center;
+  .message {
+    font-size: 2em;
+    width: 30%;
+  }
 }
+

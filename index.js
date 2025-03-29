@@ -42,7 +42,7 @@ button.addEventListener("click", () => {
 keyButton.forEach((button) => {
   button.addEventListener("click", (e) => {
     let indices = compareValuesReturnIndex(e, gameWord);
-    validateEncryptionWord(e, indices);
+    validateEncryptionWord(e, indices);q
   });
 });
 
