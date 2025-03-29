@@ -1,3 +1,6 @@
+import { appendDivAndWord } from "./dom.js";
+
+let gameStarted = false;
 export let gameWord = "";
 export let attempts = 0;
 
@@ -204,6 +207,18 @@ export const words = [
   "volleyball",
 ];
 
+export const startGame = () => {
+  const randomWord = getRandomWord(words);
+    const encryptedWord = encryptWord(randomWord);
+    appendDivAndWord("div", encryptedWord);
+    gameStarted = true;
+}
+
+export const resetAttempt = () => {
+  attempts = 0;
+  attemptContainer.src = `./assets/img/h-${attempts}.jpg`
+}
+
 export const getRandomWord = (words) => {
   let randomIndex = Math.floor(Math.random() * words.length);
   gameWord = words[randomIndex];
@@ -228,6 +243,9 @@ export const compareValuesReturnIndex = (e, word) => {
   return newArray;
 };
 
+const attemptQuery = document.querySelector(".attempt");
+const attemptContainer = document.createElement("img");
+
 export const validateEncryptionWord = (e, indices) => {
   let encryptedDiv = document.querySelector(".encrypted-word");
   let displayedWord = encryptedDiv.textContent.split("");
@@ -239,7 +257,10 @@ export const validateEncryptionWord = (e, indices) => {
       displayedWord[index * 2] = keyValue;
     } else {
       attempts++;
-      console.log('Attempts made: ' + attempts);
+      attemptContainer.src = `./assets/img/h-${attempts}.jpg`;
+      attemptContainer.classList.add('attempt-img')
+      attemptQuery.appendChild(attemptContainer);
+      console.log("Attempts made: " + attempts);
       break;
     }
   }
@@ -249,23 +270,26 @@ export const validateEncryptionWord = (e, indices) => {
   console.log(displayedWord.filter((x) => x !== " "));
 
   const message = document.querySelector(".message");
-  const boxes= document.querySelectorAll('.box');
+  const boxes = document.querySelectorAll(".box");
+  const encrypted = document.querySelector(".encrypted-word");
 
   if (displayedWord.every((x) => x !== "_")) {
     const messageDiv = document.createElement("div");
     messageDiv.textContent = "Win";
     message.appendChild(messageDiv);
     attempts = 0;
-  } else if (attempts === 11) {
+  } else if (attempts === 10) {
     const messageDiv = document.createElement("div");
     messageDiv.textContent = "Lose";
     message.appendChild(messageDiv);
     const button = document.querySelector("#btn-start");
-    button.textContent = 'RESTART GAME';
+    button.textContent = "RESTART GAME";
     attempts = 0;
-    boxes.forEach(box => {
-      box.classList.add('disabled');
+    boxes.forEach((box) => {
+      box.classList.add("disabled");
     });
+    console.log(gameWord);
+    encrypted.textContent = gameWord;
   }
 
   // value (letter) is not included in the randomWord, we want diagram of hangman to be appended

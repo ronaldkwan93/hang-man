@@ -1,4 +1,3 @@
-import { appendDivAndWord } from "./dom.js";
 import {
   words,
   getRandomWord,
@@ -7,23 +6,34 @@ import {
   compareValuesReturnIndex,
   validateEncryptionWord,
   attempts,
+  startGame,
+  resetAttempt
 } from "./game.js";
 
 const button = document.querySelector("#btn-start");
 const keyButton = document.querySelectorAll(".box");
 const message = document.querySelector(".message");
-const boxes= document.querySelectorAll('.box');
-
+const boxes = document.querySelectorAll(".box");
+const attempt = document.querySelector(".attempt");
+const attemptImg = document.querySelector(".attempt-img");
 
 //Game start button
 button.addEventListener("click", () => {
-  const randomWord = getRandomWord(words);
-  const encryptedWord = encryptWord(randomWord);
-  appendDivAndWord("div", encryptedWord);
-  message.textContent = '';
-  boxes.forEach(box => {
-    box.classList.remove('disabled');
+  startGame()
+
+  message.textContent = "";
+  boxes.forEach((box) => {
+    box.classList.remove("disabled");
   });
+  resetAttempt();
+  if(attemptImg) {
+    attemptImg.remove();
+    const imgContainer = document.createElement('img');
+    imgContainer.classList.add('attempt-img');
+    imgContainer.src = "./assets/img/h-0.jpg";
+    attempt.appendChild(imgContainer);
+  }
+
 });
 
 //eventlistener to the keyboard
