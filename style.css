@@ -1,7 +1,21 @@
+* {
+  margin: 0;
+}
+
+body {
+  margin: 0.2em;
+  padding: auto;
+  margin: auto;
+}
+
 header {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+header h1 {
+  font-size: 4.5em;
+  padding: 0.3em;
 }
 
 .random-section {
@@ -11,7 +25,7 @@ header {
 }
 
 .keyboard {
-  padding: 0 10%;
+  padding: 1.5em;
 }
 .keyboard__container {
   padding-top: 1em;
@@ -22,6 +36,9 @@ header {
 .keyboard__container .box {
   border: 1px solid black;
   padding: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  font-weight: bold;
 }
 .keyboard__container .disabled {
   opacity: 0.5;
@@ -40,6 +57,27 @@ header {
 .result-container .message {
   font-size: 2em;
   width: 30%;
+}
+
+@media (max-width: 745px) {
+  header h1 {
+    font-size: 2.5em;
+  }
+  .encrypted-word {
+    font-size: 0.5em;
+  }
+  .keyboard__container {
+    gap: 0.5em;
+  }
+  .keyboard__container .box {
+    padding: 10px !important;
+  }
+  img {
+    width: 80%;
+  }
+  .message div {
+    font-size: 0.5em;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
