@@ -230,8 +230,9 @@ export const encryptWord = (word) => {
   return word.replace(/./g, "_ ").trim();
 };
 
-export const compareValuesReturnIndex = (e, word) => {
-  const value = e.target.textContent;
+export const compareValuesReturnIndex = (e, word, isKeyboardEvent) => {
+  const value = isKeyboardEvent ? e.key : e.target.textContent;
+  console.log(value);
   const arr = word.split("");
   let newArray = [];
   for (let i = 0; i < arr.length; i++) {
@@ -246,10 +247,10 @@ export const compareValuesReturnIndex = (e, word) => {
 const attemptQuery = document.querySelector(".attempt");
 const attemptContainer = document.createElement("img");
 
-export const validateEncryptionWord = (e, indices) => {
+export const validateEncryptionWord = (e, indices, isKeyboardEvent) => {
   let encryptedDiv = document.querySelector(".encrypted-word");
   let displayedWord = encryptedDiv.textContent.split("");
-  let keyValue = e.target.textContent;
+  let keyValue = isKeyboardEvent ? e.key : e.target.textContent;
   const keyQuery = document.querySelector(`#${keyValue}`);
   keyQuery.classList.add("disabled");
   for (let i = 0; i < displayedWord.length; i++) {
@@ -283,7 +284,7 @@ export const validateEncryptionWord = (e, indices) => {
     attempts = 0;
   } else if (attempts === 10) {
     const messageDiv = document.createElement("div");
-    messageDiv.textContent = "Sorry, please try again with 'RESTART GAME'";
+    messageDiv.textContent = "Game over, please try again with 'RESTART GAME'";
     message.appendChild(messageDiv);
     const button = document.querySelector("#btn-start");
     button.textContent = "RESTART GAME";

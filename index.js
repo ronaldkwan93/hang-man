@@ -7,33 +7,18 @@ import {
   validateEncryptionWord,
   attempts,
   startGame,
-  resetAttempt
+  resetAttempt,
 } from "./game.js";
+import { resetUI } from "./dom.js";
 
 const button = document.querySelector("#btn-start");
 const keyButton = document.querySelectorAll(".box");
-const message = document.querySelector(".message");
-const boxes = document.querySelectorAll(".box");
-const attempt = document.querySelector(".attempt");
-const attemptImg = document.querySelector(".attempt-img");
 
 //Game start button
 button.addEventListener("click", () => {
-  startGame()
-
-  message.textContent = "";
-  boxes.forEach((box) => {
-    box.classList.remove("disabled");
-  });
+  startGame();
+  resetUI();
   resetAttempt();
-  if(attemptImg) {
-    attemptImg.remove();
-    const imgContainer = document.createElement('img');
-    imgContainer.classList.add('attempt-img');
-    imgContainer.src = "./assets/img/h-0.jpg";
-    attempt.appendChild(imgContainer);
-  }
-
 });
 
 //eventlistener to the keyboard
@@ -41,9 +26,16 @@ button.addEventListener("click", () => {
 //
 keyButton.forEach((button) => {
   button.addEventListener("click", (e) => {
-    let indices = compareValuesReturnIndex(e, gameWord);
-    validateEncryptionWord(e, indices);q
+    let indices = compareValuesReturnIndex(e, gameWord, false);
+    console.log(indices);
+    validateEncryptionWord(e, indices, false);
   });
+});
+
+document.addEventListener("keydown", (e) => {
+  let indices = compareValuesReturnIndex(e, gameWord, true);
+  validateEncryptionWord(e, indices, true);
+   console.log(indices);
 });
 
 //game logic
