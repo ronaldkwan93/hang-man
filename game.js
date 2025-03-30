@@ -1,6 +1,7 @@
 import { appendDivAndWord } from "./dom.js";
 
 let gameStarted = false;
+let gameFinished = false;
 export let gameWord = "";
 export let attempts = 0;
 
@@ -208,10 +209,11 @@ export const words = [
 ];
 
 export const startGame = () => {
+  gameFinished = false;
   const randomWord = getRandomWord(words);
   const encryptedWord = encryptWord(randomWord);
   appendDivAndWord("div", encryptedWord);
-  gameStarted = true;
+  return gameFinished;
 };
 
 export const resetAttempt = () => {
@@ -282,6 +284,10 @@ export const validateEncryptionWord = (e, indices, isKeyboardEvent) => {
     messageDiv.textContent = "Well done! You've guessed the word :)";
     message.appendChild(messageDiv);
     attempts = 0;
+    boxes.forEach((box) => {
+      box.classList.add("disabled");
+    });
+    gameFinished = true;
   } else if (attempts === 10) {
     const messageDiv = document.createElement("div");
     messageDiv.textContent = "Game over, please try again with 'RESTART GAME'";
@@ -294,9 +300,10 @@ export const validateEncryptionWord = (e, indices, isKeyboardEvent) => {
     });
     console.log(gameWord);
     encrypted.textContent = gameWord;
+    gameFinished = true;
   }
-
-  // value (letter) is not included in the randomWord, we want diagram of hangman to be appended
+  
+  return gameFinished;
 };
 
 // branch 2

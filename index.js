@@ -13,10 +13,14 @@ import { resetUI } from "./dom.js";
 
 const button = document.querySelector("#btn-start");
 const keyButton = document.querySelectorAll(".box");
+let gameFinished = false;
+
 
 //Game start button
 button.addEventListener("click", () => {
-  startGame();
+  let gameStatus = startGame();
+  gameFinished = gameStatus;
+  console.log(gameFinished);
   resetUI();
   resetAttempt();
 });
@@ -28,14 +32,21 @@ keyButton.forEach((button) => {
   button.addEventListener("click", (e) => {
     let indices = compareValuesReturnIndex(e, gameWord, false);
     console.log(indices);
-    validateEncryptionWord(e, indices, false);
+    let gameResult = validateEncryptionWord(e, indices, false);
+    console.log(gameResult);
+    gameFinished = gameResult;
+    console.log(gameFinished);
   });
 });
 
 document.addEventListener("keydown", (e) => {
-  let indices = compareValuesReturnIndex(e, gameWord, true);
-  validateEncryptionWord(e, indices, true);
-   console.log(indices);
+  if (!gameFinished) {
+    let indices = compareValuesReturnIndex(e, gameWord, true);
+    let gameResult = validateEncryptionWord(e, indices, true);
+     console.log(indices);
+     gameFinished = gameResult;
+     console.log(gameFinished)
+  }
 });
 
 //game logic
