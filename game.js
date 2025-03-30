@@ -290,10 +290,8 @@ export const validateEncryptionWord = (e, indices, isKeyboardEvent) => {
     gameFinished = true;
   } else if (attempts === 10) {
     const messageDiv = document.createElement("div");
-    messageDiv.textContent = "Game over, please try again with 'RESTART GAME'";
+    messageDiv.textContent = "Game over! :( Please try again with 'START GAME'";
     message.appendChild(messageDiv);
-    const button = document.querySelector("#btn-start");
-    button.textContent = "RESTART GAME";
     attempts = 0;
     boxes.forEach((box) => {
       box.classList.add("disabled");
@@ -302,7 +300,7 @@ export const validateEncryptionWord = (e, indices, isKeyboardEvent) => {
     encrypted.textContent = gameWord;
     gameFinished = true;
   }
-  
+
   return gameFinished;
 };
 
