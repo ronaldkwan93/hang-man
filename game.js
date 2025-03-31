@@ -282,6 +282,7 @@ export const validateEncryptionWord = (e, indices, isKeyboardEvent) => {
   if (displayedWord.every((x) => x !== "_")) {
     const messageDiv = document.createElement("div");
     messageDiv.textContent = "Well done! You've guessed the word :)";
+    messageDiv.classList.add("win");
     message.appendChild(messageDiv);
     attempts = 0;
     boxes.forEach((box) => {
@@ -291,6 +292,8 @@ export const validateEncryptionWord = (e, indices, isKeyboardEvent) => {
   } else if (attempts === 10) {
     const messageDiv = document.createElement("div");
     messageDiv.textContent = "Game over! :( Please try again with 'START GAME'";
+    messageDiv.classList.add("lost");
+    console.log(messageDiv.classList);
     message.appendChild(messageDiv);
     attempts = 0;
     boxes.forEach((box) => {
