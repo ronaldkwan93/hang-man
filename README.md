@@ -1,5 +1,13 @@
 # Hangman
 
+## Product Interface
+
+![Image](https://github.com/user-attachments/assets/31eb3f1c-9872-45ec-b8b9-9597ec38e2fa)
+
+## Demo Link:
+
+[Demo](https://rk-hang-man.netlify.app/#)
+
 ## Outline
 
 This task will require you to create a web based game of [Hangman](<https://en.wikipedia.org/wiki/Hangman_(game)>) using JavaScript.
@@ -24,4 +32,3 @@ There is a word list provided, feel free to modify it as you see fit.
 
 - Allow keyboard input
 - Keep track of words that have been used already and display them on the screen
-        

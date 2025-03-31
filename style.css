@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  padding: 0;
 }
 
 body {
@@ -13,13 +14,29 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 header h1 {
   font-size: 3em;
   border: 1px solid black;
   box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
-  margin: 1.2% 0;
+  margin: 1% 0;
   border-radius: 5px;
+}
+
+.instruction {
+  border: 1px solid black;
+  padding: 1em;
+  border-radius: 6px;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+  margin: auto;
+}
+.instruction h3 {
+  padding-right: 1.5em;
 }
 
 .button {
@@ -76,7 +93,7 @@ header h1 {
 .random-section {
   display: flex;
   justify-content: center;
-  font-size: 5em;
+  font-size: 3em;
 }
 
 .keyboard__container {
@@ -87,7 +104,7 @@ header h1 {
 }
 .keyboard__container .box {
   border: 1px solid black;
-  padding: 20px;
+  padding: 15px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   font-weight: bold;
@@ -112,11 +129,19 @@ header h1 {
 .result-container .message {
   font-size: 2em;
   width: 30%;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 @media (max-width: 745px) {
   header h1 {
     font-size: 2.5em;
+  }
+  .instruction {
+    font-size: 9px;
+    padding: 4%;
+  }
+  .instruction h3 {
+    display: none;
   }
   .encrypted-word {
     font-size: 0.5em;
