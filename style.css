@@ -96,6 +96,9 @@ header h1 {
   font-size: 3em;
 }
 
+.keyboard {
+  padding-bottom: 1em;
+}
 .keyboard__container {
   padding-top: 1em;
   display: flex;
@@ -118,7 +121,7 @@ header h1 {
 }
 
 .result-container {
-  padding: 3%;
+  padding: 1%;
   display: flex;
   justify-content: center;
   align-items: center;

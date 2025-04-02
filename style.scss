@@ -103,6 +103,7 @@ header {
 
 .keyboard {
   // padding: 1.5em;
+  padding-bottom: 1em;
   &__container {
     padding-top: 1em;
     display: flex;
@@ -128,7 +129,7 @@ header {
 }
 
 .result-container {
-  padding: 3%;
+  padding: 1%;
   display: flex;
   justify-content: center;
   align-items: center;

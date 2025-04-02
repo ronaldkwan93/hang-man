@@ -2,7 +2,7 @@
 
 ## Product Interface
 
-![Image](https://github.com/user-attachments/assets/31eb3f1c-9872-45ec-b8b9-9597ec38e2fa)
+![Image](https://github.com/user-attachments/assets/508b6a29-9306-4e0b-a882-4aabc9c9720c)
 
 ## Demo Link:
 
